@@ -77,6 +77,20 @@ $.ajax({
 			// { "data":"latlng"},   
 			{ "data":"Country"} 
         ],
+
+		        "aoColumnDefs":[{
+		        "sTitle":"Site name"
+		      , "aTargets": [ "site_name" ]
+		  },{
+		        "aTargets": [ 4 ]
+		      , "bSortable": false
+		      , "mRender": function ( url, type, full )  {
+		          return  '<a target="_blank" href="http://'+url+'">' + url + '</a>';
+		      }
+		  } 
+		  ],
+
+
 	    "fnDrawCallback": function( oSettings ) {
 
 	    	if(list_array.length == 0){
@@ -84,11 +98,13 @@ $.ajax({
 				 	var marker_location = oSettings["aoData"][i]["_aData"]["Project Location"].split(',').map(function(item) {
 					    return parseFloat(item, 10);
 						});
+
 				    marker = L.marker(marker_location, {icon: vbIcon}).addTo(map);
 				    list_array.push(marker);
+
 				}
 			}
-
+			 // $('td').html('<a href="#">' + oSettings["aoData"] + '</a>');
 	    }
     } ); 
     	$('#myInputTextField').keyup(function(e){
