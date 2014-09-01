@@ -49,7 +49,7 @@ html, body{
 
 }
 #data_table_paginate > span > a{
-
+  border: 1px solid #A2A2A2;
 }
 
 .textFieldWrapper{
@@ -87,15 +87,17 @@ html, body{
 }
 
 #data_table td.details-control {
-    background: url('../resources/details_open.png') no-repeat center center;
+    background: url('../images/details_open.png') no-repeat center center;
     cursor: pointer;
     background-color: #666;
     width: 20px;
+    background-size: 15px 15px;
 }
 #data_table tr.shown td.details-control {
-    background: url('../resources/details_close.png') no-repeat center center;
+    background: url('../images/details_close.png') no-repeat center center;
     background-color: #aaa;
     width: 20px;
+       background-size: 15px 15px;
 }
 
 .map-marker{

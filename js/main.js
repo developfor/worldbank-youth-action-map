@@ -159,32 +159,39 @@ var map;
 
 
 	    	$('#data_table_input_textfield').keyup(function(e){
-			
-				if (e.keyCode == 13) {
-							console.log(table)
-					$(".map-marker").remove();
-					$(".leaflet-popup").hide();
-					
-					item = table.fnFilter('"' + $(this).val() +'"');
-					var data = table._('tr', {"filter": "applied"});
-					for (var i = 0; i < data.length; i++) { 
-					    // console.log( data[i]);
-					    var marker_location = data[i]["Project Location"].split(',').map(function(item) {
-						    return parseFloat(item, 10);
-							});
-					    var popupContent =  data[i]["Name"]
+				
+					if (e.keyCode == 13) {
+					 // try {
+								console.log(table)
+						$(".map-marker").remove();
+						// $(".leaflet-popup").hide();
+						
+						item = table.fnFilter('"' + $(this).val() +'"');
+						var data = table._('tr', {"filter": "applied"});
+						for (var i = 0; i < data.length; i++) { 
+						    // console.log( data[i]);
+						    var marker_location = data[i]["Project Location"].split(',').map(function(item) {
+							    return parseFloat(item, 10);
+								});
+						    var popupContent =  data[i]["Name"]
 
-					    marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
-					    console.log(marker_location)
-					    // document.getelementsbyclassname('leaflet-popup-close-button')
-					   
+						    marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
+						    console.log(marker_location)
+						    // document.getelementsbyclassname('leaflet-popup-close-button')
+						// } catch (e) {
+						//    // statements to handle any exceptions
+						//    console.log("yikes")
+						//    // logMyErrors(e); // pass exception object to error handler
+						// }
 
+						}
+						
 					}
-					
-				}
+				
 			}) 
 			$("#go_button").on("click", function(){
 				$(".map-marker").remove();
+				// $(".leaflet-popup").hide();
 
 					item = table.fnFilter('"' + $('#data_table_input_textfield').val() +'"');
 					var data = table._('tr', {"filter": "applied"});
@@ -192,7 +199,7 @@ var map;
 					    // console.log( data[i]);
 					    var marker_location = data[i]["Project Location"].split(',').map(function(item) {
 						    return parseFloat(item, 10);
-							});
+						});
 					    marker = L.marker(marker_location, {icon: vbIcon}).bindPopup('Hello').addTo(map);
 					    console.log(marker_location)
 
@@ -216,15 +223,14 @@ var map;
 			            row.child().addClass('inner_tr');
 			            tr.addClass('shown');
 
-
-			            var location =  row.data()["Project Location"].split(',').map(function(item) {
+						var location =  row.data()["Project Location"].split(',').map(function(item) {
 						    return parseFloat(item, 10);
 							});
 
-					     $("#zoom_map").on("click", function(){
-					     	console.log(location)
-							 map.setView(location, 12);
-					     });
+						$("#zoom_map").on("click", function(){
+							console.log(location)
+						 map.setView(location, 12);
+						});
 			      
 			        }
 		    } );
