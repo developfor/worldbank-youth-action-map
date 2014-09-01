@@ -11,8 +11,14 @@
 }
 
 html, body{
-	font-family: 'Droid Sans', Arial, Helvetica, sans-serif;
+	font-family:  Arial, Helvetica, sans-serif;
 	/*background: black;*/
+}
+a{
+  color: #850000;
+}
+a:hover{
+  color: #850000;
 }
 
 .wrapper{
@@ -23,10 +29,11 @@ html, body{
 	background-color: #FFFFFF;
   padding: 20px 20px;
   margin-top: 20px; 
-  border: 1px solid #DDD;
+  border: 1px solid #D9DCCF;
+  border-top: solid #9D0909 2px;
 }
 #data_table{
-  border: 1px solid #DDD;
+  border: 1px solid #D9DCCF;
   margin-top: 5px;
   font-size: 11px;
 }
@@ -38,16 +45,26 @@ html, body{
   width:100%; 
 }
 
-#data_table_input_textfield{
-  border: 1px solid #DDD;
+#data_table_input_textfield {
+  border: 1px solid #D9DCCF;
   margin-top: 20px;
-  width: 100%;
+  /* width: 100%; */
+  width: 469px;
   height: 40px;
   font-size: 23px;
-  /*padding-left: 15px;*/
-   text-indent:15px;
-
+  /* padding-left: 15px; */
+  text-indent: 15px;
+  float: left;
+  margin-bottom: 10px;
 }
+
+
+#data_table_input_textfield:focus, input:focus{
+    outline: 0;
+}
+
+
+
 #data_table_paginate > span > a{
   border: 1px solid #A2A2A2;
 }
@@ -83,7 +100,7 @@ html, body{
 .inner-content p{
   padding-top: 10px;
  /*padding-bottom: 10px;*/
-  border-top: 1px solid #DDD;
+  border-top: 1px solid #D9DCCF;
 }
 
 #data_table td.details-control {
@@ -106,4 +123,24 @@ html, body{
 .time-small{
   font-size: 12px;
 
+}
+
+#go_button {
+  background: url('../images/magnifying.png') no-repeat center center;
+  background-color: #AAA;
+  width: 39px;
+  height: 40px;
+  background-size: 40px 40px;
+  cursor: pointer;
+  float: left;
+  margin-top: 20px;
+}
+
+.credits{
+  margin-top: 20px;
+  font-size: 11px;
+  text-align: right;
+}
+.bubble_text p{
+ margin: 7px 0 !important;
 }

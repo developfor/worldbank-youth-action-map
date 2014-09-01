@@ -1,27 +1,19 @@
 "use strict";
 var map;
 
-
 		 function format (d) {
-			    // `d` is the original data object for the row
-			    // console.log(d)
 
-			    return '<div class="inner-content">' 
+			   return '<div class="inner-content">' 
 			   +'<p><span>Full Name: </span>' +d["Name"]+ '</p>'
 			   +'<p><span>Email: </span>'+d["Email Address"]+ '</p>'
 			   +'<p><span>Age: </span>'+d["Age"]+ '</p>'
 			   +'<p><span>Gender: </span>'+d["Gender"]+ '</p>'
 			   +'<p><span>Project Website: </span><a href="http://'+d["Project Website"]+'">'+d["Project Website"]+ '</a></p>'
 			   +'<p><span>Project Title: </span>'+d["Project Title"]+ '</p>'
-			 
-
 			   +'<p ><span>Project LatLong: </span>'+d["Project Location"]+ '<br /><a href="#" id="zoom_map"> View Location On Map.</a></p>'
    			   +'<p><span>Project Country: </span>'+d["Country"]+ '</p>'
-
-
-			    +'<p><span>Project Description: </span>'+d["Project Description"]+ '</p>'
-
-			    '</div>';
+			   +'<p><span>Project Description: </span>'+d["Project Description"]+ '</p>'
+			   +'</div>';
 			}
 
 
@@ -29,7 +21,7 @@ var map;
 
 // begin map
 
-	var layer = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+	var layer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	    attribution: 'OpenStreetMap',
 	    maxZoom: 18,
 	    minZoom: 1,
@@ -142,7 +134,7 @@ var map;
 					 	var marker_location = oSettings["aoData"][i]["_aData"]["Project Location"].split(',').map(function(item) {
 						    return parseFloat(item, 10);
 							});
-						var popupContent = oSettings["aoData"][i]["_aData"]["Name"]
+						var popupContent = "<div class='bubble_text'><p><b>Name:</b> "+oSettings["aoData"][i]["_aData"]["Name"]+"</p>"+"<p><b>Project Title:</b> "+oSettings["aoData"][i]["_aData"]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ oSettings["aoData"][i]["_aData"]["Project Website"]+"> "+oSettings["aoData"][i]["_aData"]["Project Website"]+"</p></div>"
 					    // marker = L.marker(marker_location, {icon: vbIcon}).addTo(map);
 					    marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
 					 
@@ -166,17 +158,17 @@ var map;
 						$(".map-marker").remove();
 						// $(".leaflet-popup").hide();
 						
-						item = table.fnFilter('"' + $(this).val() +'"');
+						item = table.fnFilter('' + $(this).val() +'');
 						var data = table._('tr', {"filter": "applied"});
 						for (var i = 0; i < data.length; i++) { 
 						    // console.log( data[i]);
 						    var marker_location = data[i]["Project Location"].split(',').map(function(item) {
 							    return parseFloat(item, 10);
 								});
-						    var popupContent =  data[i]["Name"]
+						    var popupContent = "<div class='bubble_text'><p><b>Name:</b> "+data[i]["Name"]+"</p>"+"<p><b>Project Title:</b> "+data[i]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ data[i]["Project Website"]+"> "+data[i]["Project Website"]+"</p></div>"
 
-						    marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
-						    console.log(marker_location)
+						marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
+						    // console.log(marker_location)
 						    // document.getelementsbyclassname('leaflet-popup-close-button')
 						// } catch (e) {
 						//    // statements to handle any exceptions
@@ -193,15 +185,17 @@ var map;
 				$(".map-marker").remove();
 				// $(".leaflet-popup").hide();
 
-					item = table.fnFilter('"' + $('#data_table_input_textfield').val() +'"');
+					item = table.fnFilter('' + $('#data_table_input_textfield').val() +'');
 					var data = table._('tr', {"filter": "applied"});
 					for (var i = 0; i < data.length; i++) { 
 					    // console.log( data[i]);
 					    var marker_location = data[i]["Project Location"].split(',').map(function(item) {
 						    return parseFloat(item, 10);
 						});
-					    marker = L.marker(marker_location, {icon: vbIcon}).bindPopup('Hello').addTo(map);
-					    console.log(marker_location)
+					    var popupContent = "<div class='bubble_text'><p><b>Name:</b> "+data[i]["Name"]+"</p>"+"<p><b>Project Title:</b> "+data[i]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ data[i]["Project Website"]+"> "+data[i]["Project Website"]+"</p></div>"
+
+						marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
+					    // console.log(marker_location)
 
 					}
 			});
