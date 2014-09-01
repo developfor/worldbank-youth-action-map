@@ -6,13 +6,16 @@
 
 		<link rel="shortcut icon" href="favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
-		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css">
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/dataTables.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		
 
-		<title>++++++ THE TITLE ++++++</title>
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+		
+		<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+		<title>World Bank Youth Action Map</title>
 
 	</head>
 
@@ -20,24 +23,25 @@
 		
 		<div class ="wrapper">
 		 <div class="textFieldWrapper">
-				 <input type="text" id="myInputTextField" placeholder="Type Here To Filter Table">
+				 <input type="text" id="data_table_input_textfield" placeholder="Type Here To Filter Table"><div id="go_button">go</div>
 			 </div>
 			 <div id="map"></div>
 			
 		<table id="data_table" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
-            	<!-- <th>Timestamp Added</th> -->
-            	     <th>Name</th> 
-            	     <th>Age</th>  
-            	<!-- <th>Email Address</th> -->
-				     <th> Gender</th>
-				     <th>Project Title</th>
-			    <!-- <th>Project Location</th> -->
-				<!-- <th>Project Description</th> -->
-				     <th>Project Website</th>
-				<!-- <th>latlng</th>        -->
-					 <th>Country</th>       
+            	<th></th>
+            	<th>Time Added</th>
+	    	     <th>Name</th> 
+	    	     <!-- <th>Age</th>   -->
+	    	<!-- <th>Email Address</th> -->
+			     <!-- <th> Gender</th> -->
+			     <th>Project Title</th>
+		    <!-- <th>Project Location</th> -->
+			<!-- <th>Project Description</th> -->
+			     <!-- <th>Project Website</th> -->
+			<!-- <th>latlng</th>        -->
+				 <th>Country</th>       
             </tr>
         </thead>
 
@@ -47,41 +51,13 @@
 		<div id="test">
 		</div>
 
-		<script src = "js/vendor/d3.v3.min.js"></script>
-	<script src = "js/vendor/jquery-1.10.2.min.js"></script>
-	<script src = "js/vendor/jquery-ui-1.10.3.js"></script>
-	<script src = "js/vendor/jquery.ui.touch-punch.min.js"></script>
-<script src = "//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript">
-jQuery.fn.dataTableExt.oApi.fnGetHiddenNodes = function ( settings )
-{
-    var nodes;
-    var display = jQuery('tbody tr', settings.nTable);
- 
-    if ( jQuery.fn.dataTable.versionCheck ) {
-        // DataTables 1.10
-        var api = new jQuery.fn.dataTable.Api( settings );
-        nodes = api.rows().nodes().toArray();
-    }
-    else {
-        // 1.9-
-        nodes = this.oApi._fnGetTrNodes( settings );
-    }
- 
-    /* Remove nodes which are being displayed */
-    for ( var i=0 ; i<display.length ; i++ ) {
-        var iIndex = jQuery.inArray( display[i], nodes );
- 
-        if ( iIndex != -1 ) {
-            nodes.splice( iIndex, 1 );
-        }
-    }
- 
-    return nodes;
-};
-</script>
+<script src = "js/vendor/jquery-1.11.1.min.js"></script>
+<script src = "js/vendor/moment.js"></script>
+<script src = "js/vendor/jquery.xdomainrequest.min.js"></script>
+		
+<script src = "js/vendor/jquery.dataTables.min.js"></script>
 
-	<script src = "js/vendor/angular.js"></script>
+	
 	<script src = "js/vendor/modernizr.js"></script>
 
 	<script src = "js/plug.js"></script>
