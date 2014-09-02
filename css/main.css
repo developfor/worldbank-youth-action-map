@@ -32,7 +32,8 @@ a:hover{
   margin-top: 20px; 
   margin-bottom: 20px; 
   border: 1px solid #D9DCCF;
-  border-top: solid #9D0909 2px;
+  border-top: 3px solid #A22;
+  /*border-top: solid #9D0909 2px;*/
 }
 #data_table{
   border: 1px solid #D9DCCF;
@@ -125,7 +126,6 @@ a:hover{
 }
 .time-small{
   font-size: 12px;
-
 }
 
 #go_button {
@@ -149,4 +149,34 @@ a:hover{
 }
 .leaflet-popup-content-wrapper {
 border-radius: 0px !important;
+}
+
+.leaflet-div-icon {
+background: none !important;
+border: none !important;
+}
+
+.marker_cluster{
+  width:35px; 
+  height:35px; 
+  background-color: white; 
+  border:4px solid #00438A; 
+  border-radius:25px;
+  text-align: center;
+  line-height: 25px;
+  font-weight: bold;
+  color: #666;
+}
+
+/*.leaflet-bar a:first-child {
+border-radius: none !important;
+}*/
+.leaflet-bar a:first-child {
+border-top-left-radius: 0px !important;
+border-top-right-radius: 0px !important;
+}
+.leaflet-bar a:last-child {
+border-bottom-left-radius: 0px !important;
+border-bottom-right-radius: 0px !important;
+border-bottom: none;
 }

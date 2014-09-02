@@ -34,9 +34,24 @@ var map;
 		html:  '<div style="width:15px; height:15px; background-color:#1977CA; border:4px solid #00438A; border-radius:25px;"></div>'
 	});
 
-	map = L.map('map').setView([ 30, 0], 1).addLayer(layer);
+	map = L.map('map',{maxBounds: [[90,189.0],[-79, -190]]
+}).setView([ 30, 0], 1).addLayer(layer);
 
+	var markers = new L.MarkerClusterGroup({
+			showCoverageOnHover: false,
+	        animateAddingMarkers:true,
+	        // maxClusterRadius: 40,
+	        chunkedLoading: true,
 
+	        iconCreateFunction: function(cluster) {
+	        return new L.DivIcon({ 
+	        	iconAnchor:   [18, 18],
+	        	html: '<div class="marker_cluster">' + cluster.getChildCount() + '</div>' });
+		    }
+
+	    }
+
+	    );
 
 	// end map
 
@@ -129,16 +144,21 @@ var map;
 		    "fnDrawCallback": function( oSettings ) {
 				
 		    	if(list_array.length == 0){
+		    		
 					for (var i = 0; i < oSettings["aoData"].length; i++) {
 
 					 	var marker_location = oSettings["aoData"][i]["_aData"]["Project Location"].split(',').map(function(item) {
 						    return parseFloat(item, 10);
 							});
 						var popupContent = "<div class='bubble_text'><p><b>Project Title:</b> "+ oSettings["aoData"][i]["_aData"]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ oSettings["aoData"][i]["_aData"]["Project Website"]+"> "+oSettings["aoData"][i]["_aData"]["Project Website"]+"</a></p>"+ "<p><b>Submitted By:</b> "+oSettings["aoData"][i]["_aData"]["Name"]+" on "+moment(oSettings["aoData"][i]["_aData"]["Timestamp"]).format('l') +"</p></div>";
-					    // marker = L.marker(marker_location, {icon: vbIcon}).addTo(map);
-					    marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
-					 
+					    // marker = L.marker(marker_location, {icon: vbIcon}).addTo(map);MarkerClusterGroup()
+
+					    // marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
+					 	markers.addLayer(L.marker(marker_location, {icon: vbIcon}).bindPopup(popupContent));
+					 	map.addLayer(markers);
+
 					    list_array.push(marker);
+
 
 					}
 				}
@@ -151,11 +171,28 @@ var map;
 
 
 	    	$('#data_table_input_textfield').keyup(function(e){
-				
+
 					if (e.keyCode == 13) {
+						map.removeLayer(markers);
+						markers = new L.MarkerClusterGroup({
+							showCoverageOnHover: false,
+					        animateAddingMarkers:true,
+					        // maxClusterRadius: 40,
+					        chunkedLoading: true,
+
+					        iconCreateFunction: function(cluster) {
+					        return new L.DivIcon({ 
+					        	iconAnchor:   [18, 18],
+					        	html: '<div class="marker_cluster">' + cluster.getChildCount() + '</div>' });
+						    }
+
+					    });
+
 					 // try {
-								console.log(table)
-						$(".map-marker").remove();
+								// console.log(table)
+						// $(".map-marker").remove();
+						
+
 						// $(".leaflet-popup").hide();
 						
 						item = table.fnFilter('' + $(this).val() +'');
@@ -169,7 +206,18 @@ var map;
  							"<p><b>Submitted By:</b> "+data[i]["Name"]+" on "+moment(data[i]["Timestamp"]).format('l') +"</p>"
 						    +"</div>";
 
-						marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
+						// marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
+						// markers.addLayer(L.marker(marker_location, {icon: vbIcon}).bindPopup(popupContent).addTo(map));
+						 
+						map.removeLayer(markers);
+						
+
+						markers.addLayer(L.marker(marker_location, {icon: vbIcon}).bindPopup(popupContent));
+
+					 	map.addLayer(markers);
+						
+
+					    // list_array.push(marker);
 						    // console.log(marker_location)
 						    // document.getelementsbyclassname('leaflet-popup-close-button')
 						// } catch (e) {
@@ -177,15 +225,29 @@ var map;
 						//    console.log("yikes")
 						//    // logMyErrors(e); // pass exception object to error handler
 						// }
-
+						// map.addLayer(markers);
 						}
+						
 						
 					}
 				
 			}) 
 			$("#go_button").on("click", function(){
-				$(".map-marker").remove();
-				// $(".leaflet-popup").hide();
+				map.removeLayer(markers);
+						markers = new L.MarkerClusterGroup({
+							showCoverageOnHover: false,
+					        animateAddingMarkers:true,
+					        // maxClusterRadius: 40,
+					        chunkedLoading: true,
+
+					        iconCreateFunction: function(cluster) {
+					        return new L.DivIcon({ 
+					        	iconAnchor:   [18, 18],
+					        	html: '<div class="marker_cluster">' + cluster.getChildCount() + '</div>' });
+						    }
+
+					    });
+
 
 					item = table.fnFilter('' + $('#data_table_input_textfield').val() +'');
 					var data = table._('tr', {"filter": "applied"});
@@ -197,8 +259,10 @@ var map;
 					    var popupContent = "<div class='bubble_text'><p><b>Project Title:</b> "+ data[i]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ data[i]["Project Website"]+"> "+data[i]["Project Website"]+"</a></p>"+
  							"<p><b>Submitted By:</b> "+data[i]["Name"]+" on "+moment(data[i]["Timestamp"]).format('l') +"</p>"
 						    +"</div>";
+						markers.addLayer(L.marker(marker_location, {icon: vbIcon}).bindPopup(popupContent));
 
-						marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
+					 	map.addLayer(markers);
+						// marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
 					    // console.log(marker_location)
 
 					}
