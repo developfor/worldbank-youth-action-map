@@ -134,7 +134,7 @@ var map;
 					 	var marker_location = oSettings["aoData"][i]["_aData"]["Project Location"].split(',').map(function(item) {
 						    return parseFloat(item, 10);
 							});
-						var popupContent = "<div class='bubble_text'><p><b>Name:</b> "+oSettings["aoData"][i]["_aData"]["Name"]+"</p>"+"<p><b>Project Title:</b> "+oSettings["aoData"][i]["_aData"]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ oSettings["aoData"][i]["_aData"]["Project Website"]+"> "+oSettings["aoData"][i]["_aData"]["Project Website"]+"</p></div>"
+						var popupContent = "<div class='bubble_text'><p><b>Project Title:</b> "+ oSettings["aoData"][i]["_aData"]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ oSettings["aoData"][i]["_aData"]["Project Website"]+"> "+oSettings["aoData"][i]["_aData"]["Project Website"]+"</a></p>"+ "<p><b>Submitted By:</b> "+oSettings["aoData"][i]["_aData"]["Name"]+" on "+moment(oSettings["aoData"][i]["_aData"]["Timestamp"]).format('l') +"</p></div>";
 					    // marker = L.marker(marker_location, {icon: vbIcon}).addTo(map);
 					    marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
 					 
@@ -165,7 +165,9 @@ var map;
 						    var marker_location = data[i]["Project Location"].split(',').map(function(item) {
 							    return parseFloat(item, 10);
 								});
-						    var popupContent = "<div class='bubble_text'><p><b>Name:</b> "+data[i]["Name"]+"</p>"+"<p><b>Project Title:</b> "+data[i]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ data[i]["Project Website"]+"> "+data[i]["Project Website"]+"</p></div>"
+						    var popupContent = "<div class='bubble_text'><p><b>Project Title:</b> "+ data[i]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ data[i]["Project Website"]+"> "+data[i]["Project Website"]+"</a></p>"+
+ 							"<p><b>Submitted By:</b> "+data[i]["Name"]+" on "+moment(data[i]["Timestamp"]).format('l') +"</p>"
+						    +"</div>";
 
 						marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
 						    // console.log(marker_location)
@@ -192,7 +194,9 @@ var map;
 					    var marker_location = data[i]["Project Location"].split(',').map(function(item) {
 						    return parseFloat(item, 10);
 						});
-					    var popupContent = "<div class='bubble_text'><p><b>Name:</b> "+data[i]["Name"]+"</p>"+"<p><b>Project Title:</b> "+data[i]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ data[i]["Project Website"]+"> "+data[i]["Project Website"]+"</p></div>"
+					    var popupContent = "<div class='bubble_text'><p><b>Project Title:</b> "+ data[i]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ data[i]["Project Website"]+"> "+data[i]["Project Website"]+"</a></p>"+
+ 							"<p><b>Submitted By:</b> "+data[i]["Name"]+" on "+moment(data[i]["Timestamp"]).format('l') +"</p>"
+						    +"</div>";
 
 						marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
 					    // console.log(marker_location)

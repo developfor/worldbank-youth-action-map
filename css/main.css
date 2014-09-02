@@ -30,6 +30,7 @@ a:hover{
 	background-color: #FFFFFF;
   padding: 20px 20px;
   margin-top: 20px; 
+  margin-bottom: 20px; 
   border: 1px solid #D9DCCF;
   border-top: solid #9D0909 2px;
 }
@@ -44,6 +45,7 @@ a:hover{
 #map {
   height:300px; 
   width:100%; 
+  margin-bottom: 10px;
 }
 
 #data_table_input_textfield {
@@ -144,4 +146,7 @@ a:hover{
 }
 .bubble_text p{
  margin: 7px 0 !important;
+}
+.leaflet-popup-content-wrapper {
+border-radius: 0px !important;
 }
