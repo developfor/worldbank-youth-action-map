@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
   font-family: 'Droid Sans';
   font-weight: normal;
   src: url(../fonts/DroidSans.ttf); 
@@ -9,6 +9,7 @@
   font-weight: bold;
   src: url(../fonts/DroidSans-Bold.ttf); 
 }
+*/
 
 html, body{
 	font-family:  Arial, Helvetica, sans-serif;

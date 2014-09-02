@@ -5,8 +5,8 @@ var map;
 
 			   return '<div class="inner-content">' 
 			   +'<p><span>Full Name: </span>' +d["Name"]+ '</p>'
-			   +'<p><span>Email: </span>'+d["Email Address"]+ '</p>'
-			   +'<p><span>Age: </span>'+d["Age"]+ '</p>'
+			   // +'<p><span>Email: </span>'+d["Email Address"]+ '</p>'
+			   // +'<p><span>Age: </span>'+d["Age"]+ '</p>'
 			   +'<p><span>Gender: </span>'+d["Gender"]+ '</p>'
 			   +'<p><span>Project Website: </span><a href="http://'+d["Project Website"]+'">'+d["Project Website"]+ '</a></p>'
 			   +'<p><span>Project Title: </span>'+d["Project Title"]+ '</p>'
@@ -60,8 +60,8 @@ var map;
 					var item = {
 				    	"Timestamp" : data["rows"][index][0],
 					    "Name": data["rows"][index][1],
-					    "Age": data["rows"][index][2],
-					    "Email Address": data["rows"][index][3],
+					    // "Age": data["rows"][index][2],
+					    // "Email Address": data["rows"][index][3],
 						"Gender": data["rows"][index][4],
 						"Project Title": data["rows"][index][5],
 						"Project Location": data["rows"][index][6],
