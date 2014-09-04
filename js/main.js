@@ -77,13 +77,13 @@ var map;
 					    "Name": data["rows"][index][1],
 					    // "Age": data["rows"][index][2],
 					    // "Email Address": data["rows"][index][3],
-						"Gender": data["rows"][index][4],
-						"Project Title": data["rows"][index][5],
-						"Project Location": data["rows"][index][6],
-						"Project Description": data["rows"][index][7],
-						"Project Website": data["rows"][index][8],
-						"latlng": data["rows"][index][9],
-						"Country": data["rows"][index][10]
+						"Gender": data["rows"][index][2],
+						"Project Title": data["rows"][index][3],
+						"Project Location": data["rows"][index][4],
+						"Project Description": data["rows"][index][5],
+						"Project Website": data["rows"][index][6],
+						"latlng": data["rows"][index][7],
+						"Country": data["rows"][index][8]
 						}
 					array.push(item);
 		        }  
