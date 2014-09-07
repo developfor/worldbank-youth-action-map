@@ -601,11 +601,12 @@ try{
    		 // document.body.scrollHeight = 0;
    		   		 // var pageheight = $(document.body).height(); 
 
-   		var pageheight = $("#wrapper_id").height()
+   		var pageheight = parseInt($("#wrapper_id").height());
+
    		// console.log(parent.window.document.getElementById(window.frameElement.id))
   		var frame =  window.parent.document.getElementById(window.frameElement.id)
-  		console.log(pageheight);
-  		frame.style.height = pageheight + "px" 
+  		// console.log(pageheight);
+  		frame.style.height = pageheight + 90 + "px" 
 
 
 	}
