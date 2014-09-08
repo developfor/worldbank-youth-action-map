@@ -64,7 +64,7 @@ table.dataTable{width:100%;margin:0 auto;clear:both;border-collapse:separate;bor
 <style type="text/css">
 /*main css*/
 .wrapper{font-family:Arial,Helvetica,sans-serif}a{color:#850000}a:hover{color:#850000}.wrapper{word-wrap: break-word;margin:0 auto;width:550px;background-color:#fff;padding:20px 20px;margin-top:20px;margin-bottom:20px;border:1px solid #d9dccf;border-top:3px solid #A22; position: relative;}#data_table{border:1px solid #d9dccf;margin-top:5px;font-size:11px}
-.dataTables_filter,#data_table_length{display:none}#map{height:300px;width:100%;margin-bottom:10px}#data_table_input_textfield{border:1px solid #d9dccf;margin-top:20px;width:469px;height:40px;font-size:23px;text-indent:15px;float:left;margin-bottom:10px}
+.dataTables_filter,#data_table_length{display:none}#map{height:300px;width:100%;margin-bottom:10px}#data_table_input_textfield{border:1px solid #d9dccf;margin-top:20px;width: 92%;height:40px;font-size:23px;text-indent:15px;float:left;margin-bottom:10px}
 #data_table_input_textfield:focus,input:focus{outline:0}#data_table_paginate>span>a{border:1px solid #a2a2a2}.dataTables_wrapper .dataTables_paginate{padding-top:0;margin-top:10px}#data_table th,#data_table td{overflow:hidden;text-overflow:ellipsis}.inner_tr{background-color:white!important}
 .inner-content span{font-weight:bold}.inner-content p{padding-top:10px;border-top:1px solid #d9dccf}#data_table td.details-control{background:url('https://collaboration.worldbank.org/resources/statics/41290/details_open.png') no-repeat center center;cursor:pointer;background-color:#666;width:20px;background-size:15px 15px}
 .inner-content p{font-size: 12px;}
@@ -77,6 +77,7 @@ table.dataTable{width:100%;margin:0 auto;clear:both;border-collapse:separate;bor
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
 		background: #666;
 	}
+
 #loading_text{ position: absolute; top: 25px; right: 20px; font-size: 15px; }
 .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_paginate {
 float: none;
