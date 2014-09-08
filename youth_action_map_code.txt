@@ -63,7 +63,7 @@ table.dataTable{width:100%;margin:0 auto;clear:both;border-collapse:separate;bor
 
 <style type="text/css">
 /*main css*/
-.wrapper{font-family:Arial,Helvetica,sans-serif}a{color:#850000}a:hover{color:#850000}.wrapper{margin:0 auto;width:550px;background-color:#fff;padding:20px 20px;margin-top:20px;margin-bottom:20px;border:1px solid #d9dccf;border-top:3px solid #A22; position: relative;}#data_table{border:1px solid #d9dccf;margin-top:5px;font-size:11px}
+.wrapper{font-family:Arial,Helvetica,sans-serif}a{color:#850000}a:hover{color:#850000}.wrapper{word-wrap: break-word;margin:0 auto;width:550px;background-color:#fff;padding:20px 20px;margin-top:20px;margin-bottom:20px;border:1px solid #d9dccf;border-top:3px solid #A22; position: relative;}#data_table{border:1px solid #d9dccf;margin-top:5px;font-size:11px}
 .dataTables_filter,#data_table_length{display:none}#map{height:300px;width:100%;margin-bottom:10px}#data_table_input_textfield{border:1px solid #d9dccf;margin-top:20px;width:469px;height:40px;font-size:23px;text-indent:15px;float:left;margin-bottom:10px}
 #data_table_input_textfield:focus,input:focus{outline:0}#data_table_paginate>span>a{border:1px solid #a2a2a2}.dataTables_wrapper .dataTables_paginate{padding-top:0;margin-top:10px}#data_table th,#data_table td{overflow:hidden;text-overflow:ellipsis}.inner_tr{background-color:white!important}
 .inner-content span{font-weight:bold}.inner-content p{padding-top:10px;border-top:1px solid #d9dccf}#data_table td.details-control{background:url('https://collaboration.worldbank.org/resources/statics/41290/details_open.png') no-repeat center center;cursor:pointer;background-color:#666;width:20px;background-size:15px 15px}
@@ -89,7 +89,6 @@ text-align: center;
 	float: left;
 font-size: 11px;
 text-align: left;
-
 }
 
 .credits-container{height: 25px;}
@@ -553,7 +552,8 @@ var map;
 		html:  '<div style="width:15px; height:15px; background-color:#0a8ac9; border:4px solid #00438A; border-radius:25px;"></div>'
 	});
 
-	var map = L.map('map',{maxBounds: [[90,189.0],[-79, -190]],  
+	var map = L.map('map',{
+		// maxBounds: [[185,187],[-166, -156]],  
 			fullscreenControl: true,
 			fullscreenControlOptions: {
 		    position: 'topleft'
@@ -756,12 +756,19 @@ var map;
 					var item = table.fnFilter('"' + input +'"');
 					var data = table._('tr', {"filter": "applied"});
 					for (var i = 0; i < data.length; i++) { 
+						console.log(data[i]["Project Website"])
+						if(data[i]["Project Website"] === null){
+							var website = ""
+						}else{	
+							var website = "<p><b>Project Website:</b><a target='_blank' href="+ data[i]["Project Website"]+"> "+data[i]["Project Website"]+"</a></p>";
+						}
 
 					    var marker_location = data[i]["Project Location"].split(',').map(function(item) {
 						    return parseFloat(item, 10);
 						});
-					    var popupContent = "<div class='bubble_text'><p><b>Project Title:</b> "+ data[i]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ data[i]["Project Website"]+"> "+data[i]["Project Website"]+"</a></p>"+
- 							"<p><b>Submitted By:</b> "+data[i]["Name"]+" on "+moment(data[i]["Timestamp"]).format('l') +"</p>"
+					    var popupContent = "<div class='bubble_text'><p><b>Project Title:</b> "+ data[i]["Project Title"]+"</p>"+ website 
+					    	
+					    +"<p><b>Submitted By:</b> "+data[i]["Name"]+" on "+moment(data[i]["Timestamp"]).format('l') +"</p>"
 						    +"</div>";
 						markers.addLayer(L.marker(marker_location, {icon: vbIcon}).bindPopup(popupContent));
 
