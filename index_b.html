@@ -1,10 +1,16 @@
+ <!doctype html>
+ <head>
+	 <meta http-equiv="X-UA-Compatible" content="IE=Edge,IE=9, chrome=1">
+ </head>
+ <html>
+<body>
 <script type="text/javascript">
-	try{
-		window.parent.document.getElementById("widgetIframe189148").remove();
-	}
-	catch(e){
+	// try{
+	// 	window.parent.document.getElementById("widgetIframe189148").remove();
+	// }
+	// catch(e){
 
-	}
+	// }
 
 </script>
 
@@ -66,7 +72,7 @@ table.dataTable{width:100%;margin:0 auto;clear:both;border-collapse:separate;bor
 
 <style type="text/css">
 /*main css*/
-.wrapper{font-family:Arial,Helvetica,sans-serif}a{color:#850000}a:hover{color:#850000}.wrapper{margin:0 auto;width:550px;background-color:#fff;padding:20px 20px;margin-top:20px;margin-bottom:20px;border:1px solid #d9dccf;border-top:3px solid #A22}#data_table{border:1px solid #d9dccf;margin-top:5px;font-size:11px}
+.wrapper{font-family:Arial,Helvetica,sans-serif}a{color:#850000}a:hover{color:#850000}.wrapper{margin:0 auto;width:550px;background-color:#fff;padding:20px 20px;margin-top:20px;margin-bottom:20px;border:1px solid #d9dccf;border-top:3px solid #A22; position: relative;}#data_table{border:1px solid #d9dccf;margin-top:5px;font-size:11px}
 .dataTables_filter,#data_table_length{display:none}#map{height:300px;width:100%;margin-bottom:10px}#data_table_input_textfield{border:1px solid #d9dccf;margin-top:20px;width:469px;height:40px;font-size:23px;text-indent:15px;float:left;margin-bottom:10px}
 #data_table_input_textfield:focus,input:focus{outline:0}#data_table_paginate>span>a{border:1px solid #a2a2a2}.dataTables_wrapper .dataTables_paginate{padding-top:0;margin-top:10px}#data_table th,#data_table td{overflow:hidden;text-overflow:ellipsis}.inner_tr{background-color:white!important}
 .inner-content span{font-weight:bold}.inner-content p{padding-top:10px;border-top:1px solid #d9dccf}#data_table td.details-control{background:url('https://collaboration.worldbank.org/resources/statics/41290/details_open.png') no-repeat center center;cursor:pointer;background-color:#666;width:20px;background-size:15px 15px}
@@ -80,18 +86,18 @@ table.dataTable{width:100%;margin:0 auto;clear:both;border-collapse:separate;bor
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
 		background: #666;
 	}
-}
 
+#loading_text{ position: absolute; top: 25px; right: 20px; font-size: 15px; }
 
 </style>
 
 
 <style type="text/css">
 /* full screen map css */
-.leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen.png); }
-.leaflet-retina .leaflet-control-zoom-fullscreen { background-image: url(icon-fullscreen-2x.png); background-size: 26px 26px; }
+.leaflet-control-zoom-fullscreen { background-image: url(https://collaboration.worldbank.org/resources/statics/41290/icon-fullscreen.png); }
+.leaflet-retina .leaflet-control-zoom-fullscreen { background-image: url(https://collaboration.worldbank.org/resources/statics/41290/icon-fullscreen-2x.png); background-size: 26px 26px; }
 .leaflet-container:-webkit-full-screen { width: 100% !important; height: 100% !important; z-index: 99999; }
-.leaflet-pseudo-fullscreen { position: fixed !important; width: 100% !important; height: 100% !important; top: 0px !important; left: 0px !important; z-index: 99999; }
+.leaflet-pseudo-fullscreen { border: 0; position:absolute; top:0; left:0; right:0; bottom:0; position: fixed !important; width: 100% !important; height: 100% !important; top: 0px !important; left: 0px !important; z-index: 99999; }
 </style>
 
 
@@ -109,6 +115,7 @@ text-align:center; width:100%;" >Please update your browser.</div><![endif]-->
 
 <div class ="wrapper" id="wrapper_id"> 
 	<div ><img src="https://collaboration.worldbank.org/resources/statics/41290/youth_summit_logo.jpg" width="200"> </div>
+	<div id="loading_text"><p>Loading...</p></div>
 	<div class="textFieldWrapper">
 		<input type="text" id="data_table_input_textfield" placeholder="Search Projects"><div id="go_button"></div>
 	</div>
@@ -126,8 +133,9 @@ text-align:center; width:100%;" >Please update your browser.</div><![endif]-->
 		</thead>
 
 	</table>
-	<div class="credits">Developed By:<a href="http://developfor.com" target="_blank"> develop_for</a></div>
+	<div class="credits">Developed By:<a href="http://developfor.com" target="_blank"> develop_for </a>&copy; 2014</div>
 </div>
+
 <!--<![endif]-->
 
 <script type="text/javascript">
@@ -457,6 +465,7 @@ source : http://johndyer.name/native-fullscreen-javascript-api-plus-jquery-plugi
 					return document.webkitIsFullScreen;
 				default:
 					return document[this.prefix + 'FullScreen'];
+
 			}
 		};
 		fullScreenApi.requestFullScreen = function(el) {
@@ -500,7 +509,7 @@ var map;
 			   return '<div class="inner-content">' 
 			   +'<p style="font-size: 20px;"><span>Project Title: </span>'+d["Project Title"]+ '</p>'
 			   +'<p><span>Project Country: </span>'+d["Country"]+ '</p>'
-			   +'<p ><span>Project Geo Coordinates: </span>'+d["Project Location"]+ '<br /><br /><a style="cursor: pointer;" id="zoom_map"> View Location The Map</a></p>'
+			   +'<p ><span>Project Geo Coordinates: </span>'+d["Project Location"]+ '<br /><br /><a style="cursor: pointer;" id="zoom_map"> View Location Map</a></p>'
 			   +'<p><span>Project Website: </span><a href="http://'+d["Project Website"]+'">'+d["Project Website"]+ '</a></p>'
 			   +'<p><span>Submitted By: </span>' +d["Name"]+ '</p>'
 			   +'<p><span>Gender: </span>'+d["Gender"]+ '</p>'
@@ -522,8 +531,8 @@ var map;
 // begin map
 
 	var layer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	    attribution: 'Tiles courtesy of <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a>',
-
+	    attribution: 'Tiles courtesy of <a href="http://www.openstreetmap.org" target="_blank">OpenStreetMap</a>| <a href="http://leafletjs.com" target="_blank">Leaflet</a>',
+	 
 	    maxZoom: 18,
 	    minZoom: 1,
 		
@@ -541,8 +550,9 @@ var map;
 		    position: 'topleft'
 		  }
 		}).setView([ 30, 0], 1).addLayer(layer);
+	map.attributionControl.setPrefix('<a href="http://developfor.com" target="_blank"> develop_for</a>');
 
-	// L.control.attribution({position: 'topright'}).addTo(map);
+	// L.control.attribution({position: 'topright'}).addAttribution("hi").addTo(map);
 
 	var markers = new L.MarkerClusterGroup({
 			showCoverageOnHover: false,
@@ -566,15 +576,14 @@ var map;
 		 console.log( map.getZoom());
 
 		 	var current_zoom =  map.getZoom();
+		 	 // var frame =  window.parent.document.getElementById(window.frameElement.id);
 		 	if(current_zoom < 2){
 		 		map.setZoom(2);
 		 	}
-		  // map.setZoom((3);
 
 		});
 
 		map.on('exitFullscreen', function(){
-		  // console.log('exited fullscreen');
 		});
 
 	$.ajax({ 
@@ -587,7 +596,7 @@ var map;
 		contentType: 'application/json',
 	    success: function (data) {
 	    	
-
+	    	$("#loading_text").css("display", "none");
 			var index,
 				array = [];
 		    	for (index = 0; index < data["rows"].length; index++) {
@@ -659,9 +668,7 @@ var map;
 						    return parseFloat(item, 10);
 							});
 						var popupContent = "<div class='bubble_text'><p><b>Project Title:</b> "+ oSettings["aoData"][i]["_aData"]["Project Title"]+"</p>"+"<p><b>Project Website:</b><a target='_blank' href="+ oSettings["aoData"][i]["_aData"]["Project Website"]+"> "+oSettings["aoData"][i]["_aData"]["Project Website"]+"</a></p>"+ "<p><b>Submitted By:</b> "+oSettings["aoData"][i]["_aData"]["Name"]+" on "+moment(oSettings["aoData"][i]["_aData"]["Timestamp"]).format('l') +"</p></div>";
-					    // marker = L.marker(marker_location, {icon: vbIcon}).addTo(map);MarkerClusterGroup()
-
-					    // marker = L.marker(marker_location, {icon: vbIcon}).addTo(map).bindPopup(popupContent);
+					 
 					 	markers.addLayer(L.marker(marker_location, {icon: vbIcon}).bindPopup(popupContent));
 					 	map.addLayer(markers);
 
@@ -670,7 +677,6 @@ var map;
 
 					}
 				}
-				 // $('td').html('<a href="#">' + oSettings["aoData"] + '</a>');
 		    }
 	    } ); 
 
@@ -834,6 +840,6 @@ console.log(document.body.scrollHeight)
 	
 </script>
 
-
-
+</body>
+</html>
 
